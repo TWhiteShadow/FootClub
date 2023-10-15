@@ -1,7 +1,7 @@
 <?php
 
     use App\Database\PlayerDatabase;
-    
+    require '../src/views/header.html.php';
 ?>
 
 <!DOCTYPE html>

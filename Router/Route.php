@@ -7,7 +7,7 @@ require '../vendor/autoload.php';
 
 class Route
 {
-    private $path;
+    public $path;
     public $action;
     private $matches;
 
@@ -33,8 +33,7 @@ class Route
 
     public function execute(){
         $params = explode("@", $this->action);
-        $controllerClass =  $params[0];
-        $controller = new $controllerClass();
+        $controller =  new $params[0]();
         $method = $params[1];
         
         return isset($this->matches[1]) ? $controller->$method($this->matches[1]) : $controller->$method;
