@@ -3,7 +3,6 @@
 namespace App\Model;
 
 class Player {
-    private int $id;
     private string $lastName; // Changed from $nom
     private string $name; // Changed from $prenom
     private \DateTime $dateDeNaissance;
@@ -35,7 +34,7 @@ class Player {
     }
 
     // Getter for name (formerly prenom)
-    public function getFirstName(): string { // Changed from getPrenom
+    public function getName(): string { // Changed from getPrenom
         return $this->name;
     }
 
@@ -45,7 +44,7 @@ class Player {
     }
 
     // Getter for dateDeNaissance
-    public function getBirthdate(): \DateTime {
+    public function getDateDeNaissance(): \DateTime {
         return $this->dateDeNaissance;
     }
 

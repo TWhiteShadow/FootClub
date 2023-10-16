@@ -1,6 +1,3 @@
-<?php
-    require '../src/views/header.html.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets\football_pic2.png" type="image/x-icon">
     <link rel="stylesheet" href="styles\style.css">
-    <title>FootClub | Ajout joueur</title>
+    <title>FootClub - Ajout / Modif joueur</title>
 </head>
 
 <body>
     <?php
-   
+    require '../autoloader.php';
+    require '../include/header.php';
+    require '../include/connexion_bdd.php';
 
     use App\Model\FormValidator;
     use App\Model\PlayerInsertion;
@@ -65,14 +64,32 @@
         }
 
         if (!$validator->hasErrors()) {
-            
+            // Process the form data and insert it into the database, for example.
+            // After successful processing, you can set a success message like $addPlayerSuccess.
+    
+            // Instantiate the PlayerInsertion class
+            $playerInsertion = new PlayerInsertion($connexion);
+
+            // Get form data
+            $firstname = $_POST['addPlayerName'];
+            $lastname = $_POST['addPlayerLastName'];
+            $birthdate = $_POST['addPlayerBirthDate'];
+    
+            // Insert player data
+            $playerId = $playerInsertion->insertPlayer($firstname, $lastname, $birthdate, $newFileName);
+
+            if ($playerId) {
+                echo "Player inserted successfully with ID: $playerId";
+            } else {
+                echo "Error inserting player data.";
+            }
         }
     }
     ?>
 
     <div class="ajoutModifJoueur">
         <form action="#" method="POST" enctype="multipart/form-data">
-            <h1>+ Ajout Joueur</h1>
+            <h1>+ Ajouter un Club</h1>
             <!-- Display optional success message -->
             <?php echo isset($addPlayerSuccess) ? $addPlayerSuccess : ""; ?>
 
@@ -106,7 +123,7 @@
             <?php echo $validator->errors['photo du joueur'] ?? ''; ?>
 
             <input type="hidden" name="addPlayer">
-            <input type="submit" value="Envoyer">
+            <input type="submit" value="Submit!">
         </form>
     </div>
 

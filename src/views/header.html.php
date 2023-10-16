@@ -16,10 +16,10 @@
             <img src="assets/ClubFoot.png" alt="">
         </li>
         <li>
-            <a href="index.php">Accueil</a>
+            <a href="/">Accueil</a>
         </li>
         <li>
-            <a href="ajoutModifJoueur.php">Ajouter un joueur</a>
+            <a href="Ajout">Ajouter un joueur</a>
         </li>
         <li>
             <a href="index.php?page=deleteContact">Ajouter un match</a>

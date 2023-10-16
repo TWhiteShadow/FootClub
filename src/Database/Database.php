@@ -13,7 +13,7 @@ final readonly class Database
 			$host = getenv('DB_HOST'); // name of the database
 			$connexion = new \PDO("mysql:host=$host;dbname=$dbName;charset=UTF8", $user, $pass);
 		} catch (\Exception $exception) {
-			echo 'Erreur lors de la connexion à la base de données. : ' . $exception->getMessage();
+			echo 'Erreur lors de la connexion à la base de données : ' . $exception->getMessage();
 			exit;
 		}
 		return $connexion;
